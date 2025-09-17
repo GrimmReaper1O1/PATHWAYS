@@ -1,0 +1,47 @@
+<HTML>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./CSS/stylesheet.css"/>
+    </head>
+    <body>
+
+
+        <div id="menu"></div>
+        <header class="vh10 align-centered flex flex-direction-column">
+            <h1>PATHWAYS</h1>
+        </header>
+        <div id="main" class="vh90 flex justify-content">
+            <div id="moduleList" class="width-80 overflowScroll">
+
+            </div>
+            <div class="width-20">
+                <br>
+                <button>RETREIVE INFORMATION!</button><br><br>
+                <button>INPUT INFORMATION!</button><br><br>
+
+            </div>
+        </div>
+
+
+
+        <div class="width-100 vh80 align-centered margin-auto hidden">
+            <button>back</button>
+            <div id="retreivalDiv" class="vh80 width-100">
+                <textarea class="width-100 vh70"></textarea>
+            </div>
+            <button>back</button>
+        </div>
+
+
+
+        <div id="inputDiv" class="vh90 width-100 margin-auto align-centered hidden">
+            <button>INPUT INFORMATION!</button>
+            <textarea id="" class="width-100 height-vh60 margin-auto vh70"></textarea>
+            <button>INPUT INFORMATION!</button>
+        </div>
+        <script src="./SCRIPT/indexedDb.js"></script>
+        <script src="./SCRIPT/jquery-3.7.1.min.js"></script>
+        <script src="./SCRIPT/menu.js"></script>
+        <script src="./SCRIPT/createOrCopy.js"></script>
+        <script src="./SCRIPT/moduleSelection.js"></script>
+    </body>
+</HTML>
