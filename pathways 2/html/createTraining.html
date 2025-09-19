@@ -1,0 +1,120 @@
+<HTML>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./CSS/stylesheet.css"/>
+    </head>
+    <body>
+        <header class="">
+            <div id="menu" class="menu-size height-auto fixed-right"></div>
+        </header>
+
+        <div class="flex flex-direction-column vh10">
+            <div class="align-centered">PATHWAYS</div>
+        </div>
+    
+        
+        <div id="menuSelection">
+            <div class="vh90 flex justify-content">
+                <div class="min-width-80">
+                    <div id="menuBoxEl" class="margin-auto width-100 overflowScroll">
+                        <br>
+                    </div>
+                </div>
+                <div class="max-width-20">
+                    <div id="failureSystem"></div>
+                    <button onclick="selectLevel(event)" class="width-80">SELECT LEVEL</button><br><br>
+                    <button onclick="view(event, true)" class="width-80">SELECT OPTION</button><br><br>
+                    <button onclick="alterOption(event)" class="width-80">ALTER OPTION</button><br><br>
+                    <button onclick="moduleOption(event)" class="width-80"> CREATE MODULE</button><br><br>
+                    <button onclick="createOption(event)" class="width-80">CREATE OPTION</button><br><br>
+                </div>
+            </div>
+        </div>
+    
+   
+        <div id="fieldPane" class="hidden vh90 ">
+            <div class="flex vh90 overflowHidden min-width-80">
+                <div class="min-width-80 overflowScroll vh90 margin-auto justify-content">
+                  
+                    <label for="secs">NUMBER OF SECONDS TO DISPLAY IMAGE<br><br>
+                    <input type="number" id="secs" class="width-100"/><br><br>
+                    </label>
+                    <label for="displayImageBefore">DISPLAY IMAGE BEFORE
+                        <input id="displayImageBefore" type="checkbox"/>
+                    </label><br>
+                    <label for="displayImageWhile">DISPLAY IMAGE WHILE
+                        <input id="displayImageWhile" type="checkbox"/>
+                    </label><br><br>
+                    <label for="picName">PICTURE FILE NAME<br><br>
+                    <input type="text" id="picName" class="fieldWidth-90 width-100" /><br><br>
+                    </label>
+                    <label for="breifDescription">BRIEF DESRIPTION<br><br>
+                    <textarea id="breifDescription" class="fieldWidth-90 height-6rem width-100" ></textarea></label><br><br>
+                    <label for="option">OPTION TO CHOOSE<br><br>
+                    <textarea id="option" class="fieldWidth-90 height-15rem width-100" ></textarea></label><br><br>
+                    <label for="answerToOption">ANSWER TO OPTION <br><br>
+                    <textarea id="answerToOption" class="fieldWidth-90 height-15rem width-100" ></textarea>
+                    </label><br>
+                </div>
+                <div class="max-width-20">
+                    <span id="trainilngObj"></span>
+                    <button onclick="backfieldPane(event)" class="width-80">BACK</button><br>
+                    <button onclick="save(event)" class="width-80">SAVE</button><br>
+                    <button onclick="view(event)" class="width-80">VIEW</button><br>
+                    <button id="deleteInfo" onclick="del(event)" class="width-80">DELETE</button><br> 
+
+                </div>
+            </div>
+        </div>
+    
+        <div id="viewLevelsOptions" class="hidden vh90 overflowHidden">
+            <div class="flex vh90 overflowScroll">
+                <div class="max-width-20">
+                   <button onclick="backLevelsOptions(event)">BACK</button> 
+                </div>
+                <div id="loopedOptionInfo">
+                    <br>
+                </div>
+                <div id="pictureDiv" class="hidden flex flex-direction-column max-width-20">
+                    <div id="imageDiv" class="imageHolderSmall  width100">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="viewIndividualOption" class="hidden  vh90 overflowHidden">
+            <div class="flex vh90 overflowScroll">
+                <div class="max-width-20">
+                   <button onclick="backIndividualOption(event)">BACK</button> 
+                </div>
+                <div id="optionInfoIndividual">
+                    <br>
+                </div>
+            </div>
+        </div>
+    
+        <div id="messageDiv" class="hidden align-centered vh90 flex flex-direction-column overflowHidden">
+            <div class="overflowScroll">
+                <input type="text" id="moduleField" class="hidden"/><br>
+                <h4 id='insert' class="hidden">INSERT INTRODUCTION</h4>
+                <textarea id="introduction" class="hidden width-100 height-15rem"></textarea>
+                <span id="message">ARE YOU COMPLETELY SURE?</span>
+                <div id="yesNo" class="align-centered">
+                    <button id="modSav">SAVE</button>
+                    <button id="yes" onclick="yes(event)">YES!</button>
+                    <button id="no" onclick="no(event)">NO!</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="imageDiv" class="hidden width-100 vh90">
+            <br>
+        </div>
+
+    <script src="./SCRIPT/indexedDb.js"></script>
+    <script src="./SCRIPT/jquery-3.7.1.min.js"></script>
+    <script src="./SCRIPT/menu.js"></script>
+    <script src="./SCRIPT/trainingMenu.js"></script>
+    <script src="./SCRIPT/createTraining.js"></script>
+    </body>
+</HTML>

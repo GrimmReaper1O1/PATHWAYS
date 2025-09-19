@@ -1,0 +1,58 @@
+<HTML>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./CSS/stylesheet.css"/>
+    </head>
+    <body>
+
+
+        <div id="menu"></div>
+        <header class="vh10 align-centered flex flex-direction-column">
+            <h1>PATHWAYS</h1>
+        </header>
+        <div id="main" class="vh90 flex justify-content">
+            <div id="menuBoxEl" class="width-80 overflowScroll">
+
+            </div>
+            <div class="width-20">
+                <br>
+                <button onclick="retrieveInformation(event)">RETREIVE INFORMATION!</button><br><br>
+                <button onclick="inputInformation(event)">INPUT INFORMATION!</button><br><br>
+                <button onclick="copy(event)">COPY SEGMENT</button><br><br>
+                <button onclick="paste(event)">PASTE SEGMENT</button><br><br>
+            </div>
+        </div>
+
+
+
+        <div id="retrievalDivBox" class="width-100 vh80 align-centered margin-auto hidden">
+            <button onclick="backFromRetrieval(event)">back</button><br><br>
+            <button onclick="copyToClipboardRetrieval(event)">COPY TO CLIPBOARD</button><br><br>
+            <h1 id="sucClipboardCopy"></h1>
+            <div id="retreivalDiv" class="vh80 width-100">
+                <textarea id="retreivalTextArea" class="width-100 vh70"></textarea>
+            </div>
+            <button onclick="backFromRetrieval(event)">BACK</button><br><br>
+            <button onclick="copyToClipboardRetrieval(event)">COPY TO CLIPBOARD</button><br><br>
+        </div>
+
+
+
+        <div id="inputDiv" class="vh90 width-100 margin-auto align-centered hidden">
+            <button onclick="backFromInput(event)">BACK</button><br><br>
+            <button onclick="insertInformationPage(event)">INPUT INFORMATION</button><br><br>
+            <button onclick="pasteInfoPage(event)">PASTE FROM CLIPBOARD</button><br><br>
+            <span>If copying a module you will need to select the module then deselect the module to insert at that location.</span>
+            <span>If selecting a level you  must insert where you want your selection to be placed.</span>
+            <textarea id="saveTextArea" class="width-100 height-vh60 margin-auto vh70"></textarea>
+            <button onclick="backFromInput(event)">BACK</button><br><br>
+            <button onclick="insertInformationPage(event)">INPUT INFORMATION</button><br><br>
+            <button onclick="pasteInfoPage(event)">PASTE FROM CLIPBOARD</button><br><br>
+        </div>
+        <script src="./SCRIPT/indexedDb.js"></script>
+        <script src="./SCRIPT/jquery-3.7.1.min.js"></script>
+        <script src="./SCRIPT/menu.js"></script>
+        <script src="./SCRIPT/createOrCopy.js"></script>
+        <script src="./SCRIPT/moduleSelection.js"></script>
+        <script src="./SCRIPT/trainingMenu.js"></script>
+    </body>
+</HTML>
