@@ -400,7 +400,7 @@ let createMenu = (obj) => {
 
 
                 string2 += `<button id="${newObj.uid}" name="${newObj.itemKey}" value="${newObj.bS}" onclick="toggleFunc(event, ${counter})" `;
-                string2 += `class="button ${uidList[newObj.uid].tempColor}">OPTION: ${Number(newObj.itemKey)+1} LEVEL: ${counter+1} ${newObj.bS}</button><br>`;
+                string2 += `class="selectionButtonMenuList button ${uidList[newObj.uid].tempColor}">OPTION: ${Number(newObj.itemKey)+1} LEVEL: ${counter+1} ${newObj.bS}</button><br>`;
                 string2 += `<div class="${newObj.uid} hidden">`;
                 counter = counter + 1;
                 for (let keys in newObj) {

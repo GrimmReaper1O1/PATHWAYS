@@ -72,7 +72,7 @@ let link = (e) => {
         e.target.classList.remove('selectionButton');
         e.target.classList.add('blueSelectionButton');
     } else {
-        debugger;
+     
         let paths = JSON.parse(sessionStorage.getItem('fPath'));
         let obj = gatherInfoViaPath(paths);
         let linkArr = [];
@@ -388,7 +388,16 @@ findPathAndSave = (fPath, infoObj, option, truthy2 = false) => {
         return
     } else if (option === 'option3' && typeof obj2 !== 'undefined') {
         let opt = truthy2 === false ? keyLength : obj.itemKey;
-
+        if (sessionStorage.getItem('linkKey') === 'null') {
+            if (fPath.length > 0) {
+                linkKey = fPath[0];
+            } else {
+                linkKey = opt;
+                for (let i = 0; i < obj.link.length; i++) {
+                    obj.link[i][0] = opt;
+                }
+            }
+        }
         let tempObj = {
             s: DOMPurify.sanitize(obj.s), itemKey: opt, length: 0,
             dB: obj.dB,
@@ -396,7 +405,7 @@ findPathAndSave = (fPath, infoObj, option, truthy2 = false) => {
             bS: DOMPurify.sanitize(obj.bS), o: DOMPurify.sanitize(paragraphReplace(obj.o)),
             r: DOMPurify.sanitize(obj.r), uid: obj.uid, cONC: obj.cONC,
             i: DOMPurify.sanitize(obj.i), type: obj.type,
-            l: DOMPurify.sanitize(obj.l), link: [],
+            l: DOMPurify.sanitize(obj.l), link: obj.link,
         };
 
         obj2[opt] = tempObj;

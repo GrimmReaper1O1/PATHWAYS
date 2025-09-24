@@ -3,14 +3,20 @@
         <link rel="stylesheet" type="text/css" href="./CSS/stylesheet.css"/> 
     </head>
     <body>
-        <header>
-            <div id="menu"></div>
-        </header>
-        <div class="flex align-centered flex-direction-column vh10">
-            <h1>PATHWAYS</h1>
-        </div>
+         <header class="">
+        <div id="menu" class="menu-size height-auto fixed-right"></div>
+    </header>
 
-        <div id="initial" class="width-80 margin-auto">
+     <div class="flex flex-direction-column align-centered vh18">
+        <div class="flex flex-direction-row justify-content-centered">
+            <div class="seethroughBlack width-rem border-radius">
+            <h1>PATHWAYS</h1>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="initial" class="width-80 margin-auto vh80">
             <div id="trainingModuleSelection" class="width-100 align-centered flex flex-direction-column justify-content vh90">
             <button  onclick="pressFunction(event, 'objOpt')" class="selectionButton">SELECT OPTIONS AND PROGRESS THROUGH PATHWAYS</button><br><br>
             <!-- <button  onclick="pressFunction(event, 'flow')" class="selectionButton">AUTOMATICALLY FLOW THROUGH</button><br><br> -->
@@ -18,9 +24,9 @@
             </div>
         </div>
 
-        <div id="trainingDiv" class="hidden width-80 margin-auto">
+        <div id="trainingDiv" class="hidden width-80 vh80 margin-auto">
             <div >
-                <div id="info" class="min-width-80">
+                <div id="info" class="min-width-80 vh80 overflowScroll">
                 
                 </div>
                
@@ -28,14 +34,14 @@
         </div>
 
 
-        <div id="menuSelection" class="hidden">
-            <div class="vh90 flex justify-content">
-                <div class="min-width-80">
-                    <div id="menuBoxEl" class="margin-auto width-100 overflowScroll">
+        <div id="menuSelection" class="vh80 hidden">
+            <div class="vh70 flex justify-content">
+                <div class="min-width-80 vh80  overflowYHidden">
+                    <div id="menuBoxEl" class="width-80 overflowScroll margin-auto vh80">
                         <br>
                     </div>
-                </div>
-                <div class="width-80">
+                </div>    
+                <div class="width-20">
                     <div id="failureSystem"></div>
                     <button onclick="selectInfo(event, 'level')" class="selectionButton">SELECT LEVEL</button><br><br>
                     <button onclick="selectInfo(event, 'individual')" class="selectionButton">SELECT OPTION</button><br><br>

@@ -4,23 +4,35 @@
     </head>
     <body>
 
+    <header class="">
+        <div id="menu" class="menu-size height-auto fixed-right"></div>
+    </header>
 
-        <div id="menu"></div>
-        <header class="vh10 align-centered flex flex-direction-column">
+    <div class="flex flex-direction-column align-centered vh18">
+        <div class="flex flex-direction-row justify-content-centered">
+            <div class="seethroughBlack width-rem border-radius">
             <h1>PATHWAYS</h1>
-        </header>
-        <div id="main" class="vh90 flex justify-content">
-            <div id="menuBoxEl" class="width-80 overflowScroll">
-
             </div>
-            <div class="width-20">
-                <br>
-                <button onclick="pressFunction2(event, 'retrieve')">RETREIVE INFORMATION!</button><br><br>
-                <button onclick="pressFunction2(event, 'input')">INPUT INFORMATION!</button><br><br>
-                <button onclick="pressFunction2(event, 'copy')">COPY SEGMENT</button><br><br>
-                <button onclick="pressFunction2(event, 'paste')">PASTE SEGMENT</button><br><br>
-                <button onclick="del(event, false)">DELETE</button><br><br>
-                
+        </div>
+    </div>
+
+
+
+        <div id="main" class="vh80">
+            <div class="vh70 flex justify-content">
+                <div class="min-width-80 vh80  overflowYHidden">
+                    <div id="menuBoxEl" class="width-80 overflowScroll margin-auto vh80">
+                        <br>
+                    </div>
+                </div>    
+                <div class="width-20">
+                    <button class="selectionButton" onclick="pressFunction2(event, 'retrieve')">RETREIVE INFORMATION!</button><br><br>
+                    <button class="selectionButton" onclick="pressFunction2(event, 'input')">INPUT INFORMATION!</button><br><br>
+                    <button class="selectionButton" onclick="pressFunction2(event, 'copy')">COPY SEGMENT</button><br><br>
+                    <button class="selectionButton" onclick="pressFunction2(event, 'paste')">PASTE SEGMENT</button><br><br>
+                    <button class="selectionButton" onclick="del(event, false)">DELETE</button><br><br>
+                    
+                </div>
             </div>
         </div>
 
