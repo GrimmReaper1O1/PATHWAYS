@@ -1,0 +1,129 @@
+* {
+
+    /* border: 1px solid grey; */
+}
+body {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.margin-left-menu {
+    margin-left: 20rem;
+}
+.vh100 {
+    height: 100vh;
+}
+.flex {
+    display: flex;
+
+}
+.flex-direction-column {
+    flex-direction: column;
+    justify-content: center;
+}
+.align-centered {
+    text-align: center;
+}
+.height-auto {
+    height: auto;
+}
+.margin-auto {
+    margin: 0 auto;
+}
+.hidden {
+    display: none;
+}
+.menu-size {
+    width: 3rem;
+    height: 3rem;
+}
+.menu-pic {
+    background-image: url('/IMAGES/menu.png');
+    background-size: contain;
+    
+  
+}
+.min-width-80 {
+    min-width: 80%;
+}
+.max-width-20 {
+    max-width: 20%;
+}
+.justify-content {
+    justify-content: justify;
+}
+.width-80 {
+    width: 80%;
+}
+.overflowScroll {
+    overflow-y: scroll;
+}
+.feildWidth-90 {
+    width: 90%;
+}
+.height-6rem {
+    height: 6rem;
+}
+.height-15rem {
+    height: 15rem;
+}
+.vh90 {
+    height: 90vh;
+}
+.vh10 {
+    height: 10vh;
+}
+.width-100 {
+    width: 100%;
+}
+.vh80 {
+    height: 80vh;
+}
+.min-width-80 {
+    min-width: 80%;
+}
+.width-80 {
+    width: 80%;
+}
+.vh70 {
+    height: 70vh;
+}
+.blue {
+    background-color: blue;
+    color: white;
+}
+.correct {
+    background-color: green;
+color: white;
+}
+.link {
+    background-color: yellow;
+    color: black;
+}
+.orange {
+    background-color: orange;
+    color: black;
+}
+.error {
+    background-color: red;
+}
+.image-height-100 {
+    width: 100%;
+    height: auto;
+}
+.incorrect {
+    background-color: red;
+color: white;
+}
+.selectionButton {
+    width: 100%;
+    color: white;
+    border: 2px solid greenyellow;
+    background-color: darkgreen;
+}
+.blueSelectionButton {
+    width: 100%;
+    color: white;
+    border: 2px solid skyblue;
+    background-color: blue;
+}
