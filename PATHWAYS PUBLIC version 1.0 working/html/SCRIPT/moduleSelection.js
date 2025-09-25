@@ -45,8 +45,9 @@ let pressFunction2 = (e, opt) => {
 
     } else if (opt === 'paste') {
     let item = JSON.parse(sessionStorage.getItem('copyObj'));
-    uidH(false, item);
-
+    let obj = uidH(false, item);
+    console.log(item);
+    findPathAndSave(fPath, item, 'option4', false);
     setTimeout(() => {
         location.reload();
     }, 50);
@@ -89,13 +90,15 @@ let insertInformationPage = (e) => {
     // let obj = gatherInfoViaPath(fPath);
     let el = document.getElementById('saveTextArea');
     let complete = false;
-    // try {
+    try {
         let info = JSON.parse(el.value);
-        uidH(false, info, false);
+        console.log(info);
+      let obj =  uidH(false, info, false);
+      findPathAndSave(fPath, info, 'option4', false, true);
         complete = true;
-    // } catch {
-        // el.textContent = 'There was a problem with the inforamtion entered. It likely was not valid json structure. Please try again and refraim from altering the text';
-    // }
+    } catch {
+        el.textContent = 'There was a problem with the inforamtion entered. It likely was not valid json structure or there are too many entries. Please try again and refraim from altering the text';
+    }
     if (complete) {
         setTimeout(() => {
             location.reload();

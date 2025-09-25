@@ -295,7 +295,7 @@ let fieldHelper = () => {
     return obj
 }
 
-findPathAndSave = (fPath, infoObj, option, truthy2 = false) => {
+findPathAndSave = (fPath, infoObj, option, truthy2 = false, tInput = false) => {
     let path = fPath;
 
     let obj = infoObj;
@@ -415,6 +415,33 @@ findPathAndSave = (fPath, infoObj, option, truthy2 = false) => {
             obj2.length = obj2.length + 1;
         }
 
+        saveToIndexedDB('menuObject', { id: JSON.stringify(place) }, 'train', 'trainingMenu');
+        sessionStorage.setItem('menu', JSON.stringify(place));;
+        return
+    } else if (option === 'option4' && typeof obj2 !== 'undefined') {
+        // let opt = truthy2 === false ? keyLength : obj.itemKey;
+        let opt = obj2.length;
+        console.log(obj);
+        if (tInput) {
+            if ((obj2.length + 1) < 255) {
+            obj2[opt] = obj;
+            obj2.length = obj2.length +1;
+            }
+        } else {
+console.log(obj);
+if ((obj.length + obj2.length) <= 256) {
+    for (let item in obj) {
+        let obj4 = obj[item];
+        console.log(obj4);
+        if (typeof obj4.bS !== 'undefined') {
+        obj2[opt] = obj4;
+        obj2[opt].itemKey = opt;
+        opt = opt +1;
+        obj2.length = obj2.length +1;
+    }
+    }
+}
+}
         saveToIndexedDB('menuObject', { id: JSON.stringify(place) }, 'train', 'trainingMenu');
         sessionStorage.setItem('menu', JSON.stringify(place));;
         return
@@ -603,7 +630,7 @@ let del = (e, opt = true) => {
 let uidOne = () => {
     let unT = Date.now();
     let string = '';
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 2; i++) {
         string += String(Math.floor(Math.random() * 10));
     }
     let uidst = unT + 'rn' + string;
@@ -622,39 +649,47 @@ let uidH = (replace, obja, t = true, arr = false, objPath = 0) => {
 
     if (t !== true) {
         if (typeof nObj.s !== 'undefined') {
-            obj2.s = nObj.s;
-            if (replace) {
-                obj2.itemKey = fPath[fPath.length - 1]
-                t = true;
-            } else {
-                obj2.itemKey = nObj.itemKey;
-            }
-            obj2.length = 0;
-            obj2.dB = nObj.dB;
-            obj2.dIW = nObj.dIW;
-            obj2.pFN = nObj.pFN;
-            obj2.bS = nObj.bS;
-            obj2.o = nObj.o;
-            obj2.r = nObj.r;
-            obj2.i = nObj.i;
-            obj2.type = nObj.type;
+            obj2 = nObj;
+            // obj2.s = nObj.s;
+            // obj2.length = 0;
+            // obj2.dB = nObj.dB;
+            // obj2.dIW = nObj.dIW;
+            // obj2.pFN = nObj.pFN;
+            // obj2.bS = nObj.bS;
+            // obj2.o = nObj.o;
+            // obj2.r = nObj.r;
+            // obj2.i = nObj.i;
+            // obj2.type = nObj.type;
             obj2.uid = uidOne();
-            obj2.l = nObj.l; 
-            obj2.link = nObj.link;
-            obj2.cONC = nObj.cONC;
-            if (replace) {
-                findPathAndSave(fPath, obj2, 'replace', t);
-                t = false;
+            // obj2.l = nObj.l; 
+            // obj2.link = nObj.link;
+            // obj2.cONC = nObj.cONC;
+            // if (replace) {
+            //     obj2.itemKey = fPath[fPath.length - 1]
+            //     t = true;
+            //     findPathAndSave(fPath, obj2, 'replace', t);
+            //     t = false;
+            // } else {
+            //     obj2.itemKey = nObj.itemKey;
+            //     findPathAndSave(fPath, obj2, 'option3', t);
+            // }
+        if (sessionStorage.getItem('linkKey') === 'null') {
+              if (fPath.length > 0) {
+                linkKey = fPath[0];
             } else {
-                findPathAndSave(fPath, obj2, 'option3', t);
+                linkKey = opt;
+                for (let i = 0; i < obj.link.length; i++) {
+                    obj2.link[i][0] = opt;
+                }
             }
+        }
             fPath = JSON.parse(sessionStorage.getItem('fPath'));
         }
     }
 
     let counter = 0
 
-    counter2 = counter2 + 1;
+    // counter2 = counter2 + 1;
     for (let key2 in nObj) {
         nObj2 = nObj[key2];
         if (typeof nObj2.bS !== 'undefined') {
@@ -675,6 +710,80 @@ let uidH = (replace, obja, t = true, arr = false, objPath = 0) => {
     }
     return obj
 };
+// let uidH = (replace, obja, t = true, arr = false, objPath = 0) => {
+
+//     let nObj = obja;
+//     let obj2 = {};
+//     let obj;
+//     let temp;
+//     let fPath = JSON.parse(sessionStorage.getItem('fPath'));
+//     console.log(fPath);
+//     let nObj2;
+//     let t2 = false;
+
+//     if (t !== true) {
+//         if (typeof nObj.s !== 'undefined') {
+//             obj2 = nObj;
+//             // obj2.s = nObj.s;
+//             // obj2.length = 0;
+//             // obj2.dB = nObj.dB;
+//             // obj2.dIW = nObj.dIW;
+//             // obj2.pFN = nObj.pFN;
+//             // obj2.bS = nObj.bS;
+//             // obj2.o = nObj.o;
+//             // obj2.r = nObj.r;
+//             // obj2.i = nObj.i;
+//             // obj2.type = nObj.type;
+//             obj2.uid = uidOne();
+//             // obj2.l = nObj.l; 
+//             // obj2.link = nObj.link;
+//             // obj2.cONC = nObj.cONC;
+//             // if (replace) {
+//             //     obj2.itemKey = fPath[fPath.length - 1]
+//             //     t = true;
+//             //     findPathAndSave(fPath, obj2, 'replace', t);
+//             //     t = false;
+//             // } else {
+//             //     obj2.itemKey = nObj.itemKey;
+//             //     findPathAndSave(fPath, obj2, 'option3', t);
+//             // }
+//         if (sessionStorage.getItem('linkKey') === 'null') {
+//               if (fPath.length > 0) {
+//                 linkKey = fPath[0];
+//             } else {
+//                 linkKey = opt;
+//                 for (let i = 0; i < obj.link.length; i++) {
+//                     obj2.link[i][0] = opt;
+//                 }
+//             }
+//         }
+//             fPath = JSON.parse(sessionStorage.getItem('fPath'));
+//         }
+//     }
+
+//     let counter = 0
+
+//     counter2 = counter2 + 1;
+//     for (let key2 in nObj) {
+//         nObj2 = nObj[key2];
+//         if (typeof nObj2.bS !== 'undefined') {
+
+//             t = false;
+
+//             obj = uidH(false, nObj2, t, arr, objPath);
+//             if (t2) {
+//             }
+//             if (!t) {
+//                 t2 = true;
+//             }
+//         }
+//     }
+//     if (!t && !replace) {
+//         fPath.pop();
+//         sessionStorage.setItem('fPath', JSON.stringify(fPath));
+//     }
+//     return obj
+// };
 
 
 
