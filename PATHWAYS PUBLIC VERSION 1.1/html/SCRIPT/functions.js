@@ -512,7 +512,7 @@ if ((obj.length + obj2.length) <= 256) {
         place[keyLength] = {
             itemKey: keyLength, length: 0, 'bS': DOMPurify.sanitize(paragraphReplace(obj.modName)), 'uid': uid,
             cONC: 'correct', o: 'NOT REQUIRED', r: 'NOT REQUIRED', i: DOMPurify.sanitize(paragraphReplace(obj.intro)),
-            s: 0, cONC: 'correct', pFN: 'NOT INSERTED', type: 'module', l: '', link: link,
+            s: 0, cONC: 'correct', pFN: 'NOT INSERTED', type: 'module', l: '', link: link, dB: '', dIW: '',
         };
 
         place.length = place.length + 1;
