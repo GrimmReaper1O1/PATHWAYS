@@ -39,28 +39,32 @@
 
 
         <div id="retrievalDivBox" class="width-100 vh80 align-centered margin-auto hidden">
-            <button onclick="pressBack(event, 'retrieval')">back</button><br><br>
-            <button onclick="copyToClipboardRetrieval(event)">COPY TO CLIPBOARD</button><br><br>
-            <h1 id="sucClipboardCopy"></h1>
-            <div id="retreivalDiv" class="vh80 width-100">
-                <textarea id="retreivalTextArea" class="width-100 vh70"></textarea>
+            <div class="overflowScroll vh80">
+                <button onclick="pressBack(event, 'retrieval')">back</button><br><br>
+                <button onclick="copyToClipboardRetrieval(event)">COPY TO CLIPBOARD</button><br><br>
+                <h1 id="sucClipboardCopy"></h1>
+                <div id="retreivalDiv" class="vh80 width-100">
+                    <textarea id="retreivalTextArea" class="width-100 vh70"></textarea>
+                </div>
+                <button onclick="pressBack(event, 'retrieval')">BACK</button><br><br>
+                <button onclick="copyToClipboardRetrieval(event)">COPY TO CLIPBOARD</button><br><br>
             </div>
-            <button onclick="pressBack(event, 'retrieval')">BACK</button><br><br>
-            <button onclick="copyToClipboardRetrieval(event)">COPY TO CLIPBOARD</button><br><br>
         </div>
 
 
 
-        <div id="inputDiv" class="vh90 width-100 margin-auto align-centered hidden">
-            <button onclick="pressBack(event, 'input')">BACK</button><br><br>
-            <button onclick="insertInformationPage(event)">INPUT INFORMATION</button><br><br>
-            <button onclick="pasteInfoPage(event)">PASTE FROM CLIPBOARD</button><br><br>
-            <span>If copying a module you will need to select the module then deselect the module to insert at that location.</span>
-            <span>If selecting a level you  must insert where you want your selection to be placed.</span>
-            <textarea id="saveTextArea" class="width-100 height-vh60 margin-auto vh70"></textarea>
-            <button onclick="pressBack(event, 'input')">BACK</button><br><br>
-            <button onclick="insertInformationPage(event)">INPUT INFORMATION</button><br><br>
-            <button onclick="pasteInfoPage(event)">PASTE FROM CLIPBOARD</button><br><br>
+        <div id="inputDiv" class="vh80 width-100 margin-auto align-centered hidden">
+            <div class="overflowScroll vh80">
+                <button onclick="pressBack(event, 'input')">BACK</button><br><br>
+                <button onclick="insertInformationPage(event)">INPUT INFORMATION</button><br><br>
+                <button onclick="pasteInfoPage(event)">PASTE FROM CLIPBOARD</button><br><br>
+                <span>If copying a module you will need to select the module then deselect the module to insert at that location.</span>
+                <span>If selecting a level you  must insert where you want your selection to be placed.</span>
+                <textarea id="saveTextArea" class="width-100 height-vh60 margin-auto vh70"></textarea>
+                <button onclick="pressBack(event, 'input')">BACK</button><br><br>
+                <button onclick="insertInformationPage(event)">INPUT INFORMATION</button><br><br>
+                <button onclick="pasteInfoPage(event)">PASTE FROM CLIPBOARD</button><br><br>
+            </div>
         </div>
 
         <div id="messageDiv" class="hidden align-centered vh90 flex flex-direction-column overflowHidden">
