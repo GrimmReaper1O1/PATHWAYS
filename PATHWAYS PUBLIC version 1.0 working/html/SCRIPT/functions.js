@@ -77,6 +77,7 @@ let link = (e) => {
         let obj = gatherInfoViaPath(paths);
         let linkArr = [];
         console.log(obj);
+        console.log(paths);
         if (obj.link.length !== 0) {
         linkArr = obj.link;
         }
@@ -89,6 +90,7 @@ let link = (e) => {
             place = place[previousPath[i]];
         }
         console.log(place);
+        console.log(previousPath);
         place.link = linkArr;
         place.cONC = 'link';
         console.log(place);
@@ -388,16 +390,15 @@ findPathAndSave = (fPath, infoObj, option, truthy2 = false, tInput = false) => {
         return
     } else if (option === 'option3' && typeof obj2 !== 'undefined') {
         let opt = truthy2 === false ? keyLength : obj.itemKey;
-        if (sessionStorage.getItem('linkKey') === 'null') {
+     
             if (fPath.length > 0) {
-                linkKey = fPath[0];
+                obj.link = [];
             } else {
                 linkKey = opt;
                 for (let i = 0; i < obj.link.length; i++) {
                     obj.link[i][0] = opt;
                 }
             }
-        }
         let tempObj = {
             s: DOMPurify.sanitize(obj.s), itemKey: opt, length: 0,
             dB: obj.dB,
@@ -426,6 +427,8 @@ findPathAndSave = (fPath, infoObj, option, truthy2 = false, tInput = false) => {
             if ((obj2.length + 1) < 255) {
             obj2[opt] = obj;
             obj2.length = obj2.length +1;
+            } else {
+                throw Error 
             }
         } else {
 console.log(obj);
@@ -438,8 +441,10 @@ if ((obj.length + obj2.length) <= 256) {
         obj2[opt].itemKey = opt;
         opt = opt +1;
         obj2.length = obj2.length +1;
+    } 
     }
-    }
+} else {
+    throw Error
 }
 }
         saveToIndexedDB('menuObject', { id: JSON.stringify(place) }, 'train', 'trainingMenu');
@@ -464,13 +469,13 @@ if ((obj.length + obj2.length) <= 256) {
 
     } else if (option === 'module' && fPath.length === 0) {
 
-
+        let link = [];
         let uid = uidOne();
         place[keyLength] = {};
         place[keyLength] = {
             itemKey: keyLength, length: 0, 'bS': DOMPurify.sanitize(paragraphReplace(obj.modName)), 'uid': uid,
             cONC: 'correct', o: 'NOT REQUIRED', r: 'NOT REQUIRED', i: DOMPurify.sanitize(paragraphReplace(obj.intro)),
-            s: 0, cONC: 'correct', pFN: 'NOT INSERTED', type: 'module', l: '', link: '',
+            s: 0, cONC: 'correct', pFN: 'NOT INSERTED', type: 'module', l: '', link: link,
         };
 
         place.length = place.length + 1;
@@ -630,23 +635,29 @@ let del = (e, opt = true) => {
 let uidOne = () => {
     let unT = Date.now();
     let string = '';
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 4; i++) {
         string += String(Math.floor(Math.random() * 10));
     }
     let uidst = unT + 'rn' + string;
     return uidst;
 };
-let uidH = (replace, obja, t = true, arr = false, objPath = 0) => {
+let uidH = (replace, obja, t = true, arr = false, objPath = 0, len = false, t2 = false, level = false) => {
 
     let nObj = obja;
     let obj2 = {};
     let obj;
     let temp;
     let fPath = JSON.parse(sessionStorage.getItem('fPath'));
+    let menuObj = JSON.parse(sessionStorage.getItem('menu'));
     console.log(fPath);
     let nObj2;
-    let t2 = false;
-
+    // if (!t2 && t2 !== 'dissabled') {
+       
+    //     len = menuObj.length
+    // }
+    if (!level) {
+        level = 0;
+    } 
     if (t !== true) {
         if (typeof nObj.s !== 'undefined') {
             obj2 = nObj;
@@ -673,21 +684,27 @@ let uidH = (replace, obja, t = true, arr = false, objPath = 0) => {
             //     obj2.itemKey = nObj.itemKey;
             //     findPathAndSave(fPath, obj2, 'option3', t);
             // }
-        if (sessionStorage.getItem('linkKey') === 'null') {
-              if (fPath.length > 0) {
-                linkKey = fPath[0];
+            if (level === 0) {
+               
+            obj2.itemKey = menuObj.length;
+            } 
+                 if (fPath.length > 0) {
+                obj.link = [];
             } else {
-                linkKey = opt;
-                for (let i = 0; i < obj.link.length; i++) {
-                    obj2.link[i][0] = opt;
+                if (typeof obj2.link !== 'undefined') {
+                for (let i = 0; i < obj2.link.length; i++) {
+                    obj2.link[i][0] = len;
                 }
             }
+        }
+        if (level === 1) {
+            len = len+1;
         }
             fPath = JSON.parse(sessionStorage.getItem('fPath'));
         }
     }
 
-    let counter = 0
+    let counter = 0;
 
     // counter2 = counter2 + 1;
     for (let key2 in nObj) {
@@ -695,15 +712,17 @@ let uidH = (replace, obja, t = true, arr = false, objPath = 0) => {
         if (typeof nObj2.bS !== 'undefined') {
 
             t = false;
-
-            obj = uidH(false, nObj2, t, arr, objPath);
-            if (t2) {
+            level = level +1;
+            obj = uidH(false, nObj2, t, arr, objPath, len, t2, level);
+            if (t2 && t2 !== 'dissabled') {
+                len = len +1;
             }
-            if (!t) {
-                t2 = true;
-            }
+            level = level -1;
         }
     }
+    // if (!t) {
+    //     t2 = 'dissabled';
+    // }
     if (!t && !replace) {
         fPath.pop();
         sessionStorage.setItem('fPath', JSON.stringify(fPath));
