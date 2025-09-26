@@ -152,9 +152,9 @@ console.log('one');
             path.push(e.target.id);
             fPath.push(e.target.name);
         }
-        // console.log('one')
+        console.log('one')
     } else if ((classP[length] == e.target.id && length == toggleNum)) {
-        // console.log('two');
+        console.log('two');
         let el5 = document.getElementById(e.target.id);
 
         if (el5.classList.contains('blue')) {
@@ -168,10 +168,11 @@ console.log('one');
             el5.classList.remove(uIDButtonList[e.target.id].tempColor);
             el5.classList.add('blue');
             // may require push here
+            
         }
 
     } else if (endPos - 1 == (toggleNum)) {
-        // console.log('three');
+        console.log('three');
         //altered endPos
         let el6 = document.getElementById(classP[endPos - 1]);
         if (classP[length] !== e.target.id) {
@@ -206,16 +207,16 @@ console.log('one');
         let index = toggleNum;
         let el2;
         if (classP.length-1 !== toggleNum) {
-        for (let i = path.length - 1; i >= index; i--) {
+        // for (let i = path.length - 1; i >= index; i--) {
           
-            // console.log('one1');
+        //     console.log('one1');
   
-               fPath.pop();
-            }
+        //     //    fPath.pop();
+        //     }
         for (let i = classP.length - 1; i >= index; i--) {
             
             
-            // console.log('two');
+            console.log('two');
             
             el2 = document.getElementById(classP[i]);
             el2.classList.remove('blue');
@@ -223,7 +224,7 @@ console.log('one');
                 
                 path.pop();
                 classP.pop();
-                //      fPath.pop();
+                     fPath.pop();
                 //    path.pop();
             }
             
@@ -335,6 +336,7 @@ console.log('one');
     // console.log(fPath);
     // // // // // console.log(path); 
     console.log(fPath);
+    console.log(classP);
     sessionStorage.setItem('path', JSON.stringify(path));
     sessionStorage.setItem('classP', JSON.stringify(classP));
     sessionStorage.setItem('fPath', JSON.stringify(fPath));

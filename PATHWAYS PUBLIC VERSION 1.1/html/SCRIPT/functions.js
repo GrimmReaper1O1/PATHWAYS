@@ -3,9 +3,9 @@ loadFromIndexedDB('menuObject', 'train', 'trainingMenu').then(response => {
 
     sessionStorage.setItem('menu', res);
     let blank = [];
-    // sessionStorage.setItem('path', JSON.stringify(blank));
-    // sessionStorage.setItem('classP', JSON.stringify(blank));
-    // sessionStorage.setItem('fPath', JSON.stringify(blank));
+    sessionStorage.setItem('path', JSON.stringify(blank));
+    sessionStorage.setItem('classP', JSON.stringify(blank));
+    sessionStorage.setItem('fPath', JSON.stringify(blank));
     sessionStorage.removeItem('link');
 
        sessionStorage.removeItem('csw2');
@@ -80,14 +80,20 @@ let link = (e) => {
     } else {
      
         let paths = JSON.parse(sessionStorage.getItem('fPath'));
-        let obj = gatherInfoViaPath(paths);
-        let linkArr = [];
+        let obj = gatherInfoViaPath(JSON.parse(sessionStorage.getItem('link')));
+     
         console.log(obj);
         console.log(paths);
-        if (obj.link.length !== 0) {
-        linkArr = obj.link;
+        console.log(obj);
+        let linkArr = [];
+        for (let i = 0; i < obj.link.length; i++) {
+            linkArr.push(obj.link[i]);
+
         }
-        linkArr.push(paths);
+        linkArr.push([]);
+        for (let i = 0; i < paths.length; i++) {
+        linkArr[linkArr.length-1].push(paths[i]);
+        }
         let previousPath = JSON.parse(sessionStorage.getItem('link'));
         console.log(previousPath);
         let menu = JSON.parse(sessionStorage.getItem('menu'));
@@ -105,7 +111,8 @@ let link = (e) => {
         sessionStorage.removeItem('link');
         sessionStorage.setItem('menu', JSON.stringify(menu));
         saveToIndexedDB('menuObject', { id: JSON.stringify(menu) }, 'train', 'trainingMenu');
-        runMenu();
+        // runMenu();
+        // location.reload();
         console.log(menu, paths);
         console.log(JSON.parse(sessionStorage.getItem('fPath')));
     }
@@ -119,12 +126,13 @@ let delLink = (e) => {
     for (let i = 0; i < fPath.length; i++) {
         place = place[fPath[i]];
     }
-
-    place.link = [];
+    let li = [];
+    place.link = li;
     place.cONC = 'orange'
     sessionStorage.setItem('menu', JSON.stringify(menu));
     saveToIndexedDB('menuObject', { id: JSON.stringify(menu) }, 'train', 'trainingMenu');
     runMenu();
+    location.reload();
 }
 
 let swap = (e) => {
@@ -337,7 +345,7 @@ let fieldHelper = () => {
 
 findPathAndSave = (fPath, infoObj, option, truthy2 = false, tInput = false) => {
     let path = fPath;
-
+    let li = [];
     let obj = infoObj;
     let obj2 = {};
     let place = JSON.parse(sessionStorage.getItem('menu'));
@@ -398,7 +406,7 @@ console.log(obj2);
             o: DOMPurify.sanitize(obj.option.value),
             r: DOMPurify.sanitize(obj.answerToOption.value), uid: uidOne(),
             cONC: (obj.cONC ? 'correct' : 'incorrect'), i: 'NOT REQUIRED', type: 'option',
-            l: DOMPurify.sanitize(obj.l.value), link: [],
+            l: DOMPurify.sanitize(obj.l.value), link: li,
         };
 
         obj3.length = obj3.length + 1;
@@ -416,7 +424,7 @@ console.log(obj2);
             r: DOMPurify.sanitize(obj.r), uid: obj.uid,
             cONC: (obj.cONC ? 'correct' : (obj.cONC !== 'link' ? 'incorrect' : 'link')),
             i: DOMPurify.sanitize(obj.intro), type: obj.type,
-            l: DOMPurify.sanitize(obj.l.value), link: []
+            l: DOMPurify.sanitize(obj.l.value), link: li
         };
         fPath.push(String(opt));
         sessionStorage.setItem('fPath', JSON.stringify(fPath));

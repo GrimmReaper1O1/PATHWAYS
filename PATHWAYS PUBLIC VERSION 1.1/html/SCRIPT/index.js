@@ -12,3 +12,7 @@ let addSplash = () => {
     el.classList.remove('hidden');
 
 }
+let blank = [];
+ sessionStorage.setItem('path', JSON.stringify(blank));
+    sessionStorage.setItem('classP', JSON.stringify(blank));
+    sessionStorage.setItem('fPath', JSON.stringify(blank));
