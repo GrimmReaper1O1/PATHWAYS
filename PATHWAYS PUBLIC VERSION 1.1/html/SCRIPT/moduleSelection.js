@@ -44,12 +44,21 @@ let pressFunction2 = (e, opt) => {
     sessionStorage.setItem('copyObj', JSON.stringify(obj));
 
     } else if (opt === 'paste') {
-    let item = JSON.parse(sessionStorage.getItem('copyObj'));
-    let obj = uidH(false, item);
-    console.log(item);
-    findPathAndSave(fPath, item, 'option4', false);
+    let fPath = JSON.parse(sessionStorage.getItem('fPath'));
+   
+    let info = JSON.parse(sessionStorage.getItem('copyObj'));
+    let obj = uidH(false, info, false);
+   
+      if (typeof info.bS !== 'undefined') {
+       
+        findPathAndSave(fPath, obj, 'option4', false, true);
+     
+    } else {
+       
+        findPathAndSave(fPath, obj, 'option4', false, false);
+    }
     setTimeout(() => {
-        location.reload();
+        // location.reload();
     }, 50);
 
     } 
@@ -91,11 +100,19 @@ let insertInformationPage = (e) => {
     let el = document.getElementById('saveTextArea');
     let complete = false;
     // try {
-        let info = JSON.parse(el.value);
+        let info = {};
+       info = JSON.parse(el.value);
         console.log(info);
-      let obj =  uidH(false, info, false);
-      findPathAndSave(fPath, info, 'option4', false, true);
-    
+      let obj =  {}
+    obj = uidH(false, info, false);
+      if (typeof info.bS !== 'undefined') {
+       
+        findPathAndSave(fPath, obj, 'option4', false, true);
+     
+    } else {
+       
+        findPathAndSave(fPath, obj, 'option4', false, false);
+    }
       complete = true;
     // } catch {
     //     el.textContent = 'There was a problem with the inforamtion entered. It likely was not valid json structure or there are too many entries. Please try again and refraim from altering the text';

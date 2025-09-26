@@ -112,9 +112,9 @@ let link = (e) => {
         sessionStorage.setItem('menu', JSON.stringify(menu));
         saveToIndexedDB('menuObject', { id: JSON.stringify(menu) }, 'train', 'trainingMenu');
         // runMenu();
-        // location.reload();
         console.log(menu, paths);
         console.log(JSON.parse(sessionStorage.getItem('fPath')));
+        location.reload();
     }
 };
 let delLink = (e) => {
@@ -466,39 +466,41 @@ console.log(obj2);
         sessionStorage.setItem('menu', JSON.stringify(place));;
         return
     } else if (option === 'option4' && typeof obj2 !== 'undefined') {
-        // let opt = truthy2 === false ? keyLength : obj.itemKey;
-      let marker = false
-        for (let temp in obj) {
-        if (typeof obj[temp].bS !== 'undefined'){
-            marker === true
-        }
-    }
-    if (marker !== true) {
-        obj = obj[0];
-    }
-        let opt = obj2.length;
+        let opt = truthy2 === false ? keyLength : obj.itemKey;
+  
+        // let opt = obj2.length;
         console.log(obj);
         if (tInput) {
             if ((obj2.length + 1) < 255) {
+            obj2[opt] = {};
+            obj.itemKey = opt;
             obj2[opt] = obj;
-            obj2[opt].itemKey = opt;
             obj2.length = obj2.length +1;
             } else {
                 throw Error 
             }
         } else {
 console.log(obj);
+if (typeof obj.length === 'undefined') {
+obj.length = 0;
+for (let key in obj) {
+obj.length++
+}
+}
 if ((obj.length + obj2.length) <= 256) {
     for (let item in obj) {
+        if (typeof obj[item] !== 'undefined') {
         let obj4 = obj[item];
         console.log(obj4);
         if (typeof obj4.bS !== 'undefined') {
+        obj2[opt] = {};
+        obj4.itemKey = opt;
         obj2[opt] = obj4;
-        obj2[opt].itemKey = opt;
         opt = opt +1;
         obj2.length = obj2.length +1;
     } 
     }
+}
 } else {
     throw Error
 }
@@ -736,20 +738,20 @@ let uidH = (replace, obja, t = true, arr = false, objPath = 0, len = false, t2 =
             // obj2.r = nObj.r;
             // obj2.i = nObj.i;
             // obj2.type = nObj.type;
-            obj2.uid = uidOne();
             // obj2.l = nObj.l; 
             // obj2.link = nObj.link;
             // obj2.cONC = nObj.cONC;
             // if (replace) {
-            //     obj2.itemKey = fPath[fPath.length - 1]
+                //     obj2.itemKey = fPath[fPath.length - 1]
             //     t = true;
             //     findPathAndSave(fPath, obj2, 'replace', t);
             //     t = false;
             // } else {
-            //     obj2.itemKey = nObj.itemKey;
-            //     findPathAndSave(fPath, obj2, 'option3', t);
-            // }
-            if (level === 0 && !replace) {
+                //     obj2.itemKey = nObj.itemKey;
+                //     findPathAndSave(fPath, obj2, 'option3', t);
+                // }
+                obj2.uid = uidOne();
+                if (level === 0 && !replace) {
                for (let i = 0; i < fPath.length; i++) {
                 place = place.length;
             }
@@ -780,19 +782,22 @@ let uidH = (replace, obja, t = true, arr = false, objPath = 0, len = false, t2 =
     // counter2 = counter2 + 1;
     
     for (let key2 in nObj) {
+        if (typeof nObj[key2] !== 'undefined'){ 
         nObj2 = nObj[key2];
         console.log(nObj2);
         if (typeof nObj2.bS !== 'undefined') {
 
             t = false;
             level = level +1;
-            obj = uidH(false, nObj2, t, arr, objPath, len, t2, level);
+            obj2[key2] = {};
+         obj2[key2] =  uidH(false, nObj2, t, arr, objPath, len, t2, level);
             if (t2 && t2 !== 'dissabled') {
                 len = len +1;
             }
             level = level -1;
         }
     }
+}
     // if (!t) {
     //     t2 = 'dissabled';
     // }
@@ -800,7 +805,7 @@ let uidH = (replace, obja, t = true, arr = false, objPath = 0, len = false, t2 =
         fPath.pop();
         sessionStorage.setItem('fPath', JSON.stringify(fPath));
     }
-    return obj
+    return obj2
 };
 // let uidH = (replace, obja, t = true, arr = false, objPath = 0) => {
 
