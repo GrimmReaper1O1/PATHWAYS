@@ -5,7 +5,7 @@ loadFromIndexedDB('menuObject', 'train', 'trainingMenu').then(response => {
     let blank = [];
     // sessionStorage.setItem('path', JSON.stringify(blank));
     // sessionStorage.setItem('classP', JSON.stringify(blank));
-    sessionStorage.setItem('fPath', JSON.stringify(blank));
+    // sessionStorage.setItem('fPath', JSON.stringify(blank));
     sessionStorage.removeItem('link');
 
        sessionStorage.removeItem('csw2');
