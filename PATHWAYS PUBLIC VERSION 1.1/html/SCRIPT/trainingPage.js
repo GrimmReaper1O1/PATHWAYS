@@ -3,9 +3,9 @@ let pressFunction = (e, opt) => {
     let initialDiv = document.getElementById('initial');
     initialDiv.classList.add('hidden');
     let insert = [];
-    sessionStorage.setItem('fPath', JSON.stringify(insert));
-    sessionStorage.setItem('classP', JSON.stringify(insert));
-    sessionStorage.setItem('path', JSON.stringify(insert));
+    sessionStorage.setItem('fPath22', JSON.stringify(insert));
+    // sessionStorage.setItem('classP', JSON.stringify(insert));
+    // sessionStorage.setItem('path', JSON.stringify(insert));
     if (opt === 'objOpt') {
     let infoDiv = document.getElementById('trainingDiv');
     infoDiv.classList.remove('hidden');
@@ -84,12 +84,12 @@ let selectFunkytion = (e, opt = 'first', opt2 = 0, back = false, link = false, f
         resumeObj = gatherInfoViaPath(JSON.parse(sessionStorage.getItem('lastPath')));
     }
     if (opt === 'first') {
-        let fPath = [];
-        fPath.push(opt2);
-        sessionStorage.setItem('fPath', JSON.stringify(fPath));
+        let fPath2 = [];
+        fPath2.push(opt2);
+        sessionStorage.setItem('fPath2', JSON.stringify(fPath2));
 
 
-        let obj = gatherInfoViaPath(fPath);
+        let obj = gatherInfoViaPath(fPath2);
         let string = '';
         if (obj.dB !== '') {
             displayImageOnScreenBreifly(obj.pFN, obj.s);
@@ -139,19 +139,19 @@ let selectFunkytion = (e, opt = 'first', opt2 = 0, back = false, link = false, f
         trainingInfo.innerHTML = string;
 
     } else if (opt === 'second') {
-        let fPath = JSON.parse(sessionStorage.getItem('fPath'));
+        let fPath2 = JSON.parse(sessionStorage.getItem('fPath2'));
         if (back) {
-        fPath.pop();
-        fPath.pop();
+        fPath2.pop();
+        fPath2.pop();
         }
      
-        fPath.push(opt2);
-        sessionStorage.setItem('fPath', JSON.stringify(fPath));
+        fPath2.push(opt2);
+        sessionStorage.setItem('fPath2', JSON.stringify(fPath2));
    
-        let obj = gatherInfoViaPath(fPath);
+        let obj = gatherInfoViaPath(fPath2);
         let string = '';
         let numeral;
-        if (fPath.length > 2) {
+        if (fPath2.length > 2) {
             numeral = 'second';
         } else {
             numeral = 'first';
@@ -166,7 +166,7 @@ let selectFunkytion = (e, opt = 'first', opt2 = 0, back = false, link = false, f
             }
         }
         string += `<br><br><br>`;
-        string += `<button onclick="selectFunkytion(event, '${numeral}', '${fPath[fPath.length-2]}', 'true')" class="selectionbutton">BACK</button><br><br>`;
+        string += `<button onclick="selectFunkytion(event, '${numeral}', '${fPath2[fPath2.length-2]}', 'true')" class="selectionbutton">BACK</button><br><br>`;
            if (followed) {
             string += `<p>${paragraphReplace(resumeObj.l)}</p>`
         } else {
@@ -207,8 +207,8 @@ let selectFunkytion = (e, opt = 'first', opt2 = 0, back = false, link = false, f
     } else if (opt = 'third') {
         let link2 = JSON.parse(sessionStorage.getItem(link));
         link2.pop();
-        sessionStorage.setItem('lastPath', sessionStorage.getItem('fPath'));
-        sessionStorage.setItem('fPath', JSON.stringify(link2));
+        sessionStorage.setItem('lastPath', sessionStorage.getItem('fPath2'));
+        sessionStorage.setItem('fPath2', JSON.stringify(link2));
         if (link2.length === 0) {
         selectFunkytion(e, 'first', opt2, false, false, true);
         } else {
@@ -223,37 +223,37 @@ let rand = (min, max) => {
 }
 let automatedFunkytion = (e, key, start = true, back = false) => {
     e.preventDefault();
-    let fPath;
+    let fPath2;
  
     if (start) {
-        fPath = [];
+        fPath2 = [];
         
     } else {
-        fPath = JSON.parse(sessionStorage.getItem('fPath'));
+        fPath2 = JSON.parse(sessionStorage.getItem('fPath2'));
         
     }
     if (back) {
-    fPath.pop();
-    fPath.pop();
-    if (fPath.length === 0) loopMods(false);
+    fPath2.pop();
+    fPath2.pop();
+    if (fPath2.length === 0) loopMods(false);
     }
     if (start) {
-            fPath.push(key);
-        sessionStorage.setItem('fPath', JSON.stringify(fPath));
+            fPath2.push(key);
+        sessionStorage.setItem('fPath2', JSON.stringify(fPath2));
     
     }
 
        
         if (!start) {
     
-        fPath.push(key);
-        sessionStorage.setItem('fPath', JSON.stringify(fPath));
+        fPath2.push(key);
+        sessionStorage.setItem('fPath2', JSON.stringify(fPath2));
         } 
 
-        let obj = gatherInfoViaPath(fPath);
+        let obj = gatherInfoViaPath(fPath2);
         let string = '';
         let start2;
-        if (fPath.length > 2) {
+        if (fPath2.length > 2) {
             start2 = false;
         } else {
             start2= true;
@@ -268,7 +268,7 @@ let automatedFunkytion = (e, key, start = true, back = false) => {
             }
         }
         string += `<br><br><br>`;
-        string += `<button onclick="automatedFunkytion(event, '${fPath[fPath.length-2]}', ${start2}, 'true')" class="selectionbutton">BACK</button><br><br>`;
+        string += `<button onclick="automatedFunkytion(event, '${fPath2[fPath2.length-2]}', ${start2}, 'true')" class="selectionbutton">BACK</button><br><br>`;
         if (start) {
         string += `<p>${paragraphReplace(obj.i)}</p>`;
         

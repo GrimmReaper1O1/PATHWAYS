@@ -3,8 +3,8 @@ loadFromIndexedDB('menuObject', 'train', 'trainingMenu').then(response => {
 
     sessionStorage.setItem('menu', res);
     let blank = [];
-    sessionStorage.setItem('path', JSON.stringify(blank));
-    sessionStorage.setItem('classP', JSON.stringify(blank));
+    // sessionStorage.setItem('path', JSON.stringify(blank));
+    // sessionStorage.setItem('classP', JSON.stringify(blank));
     sessionStorage.setItem('fPath', JSON.stringify(blank));
     sessionStorage.removeItem('link');
 
@@ -107,6 +107,7 @@ let link = (e) => {
         saveToIndexedDB('menuObject', { id: JSON.stringify(menu) }, 'train', 'trainingMenu');
         runMenu();
         console.log(menu, paths);
+        console.log(JSON.parse(sessionStorage.getItem('fPath')));
     }
 };
 let delLink = (e) => {
@@ -272,13 +273,13 @@ let enterInformationIntoFields = (location, truthy = true) => {
         fieldObj.displayBefore.checked = location.dB;
         fieldObj.displayImageWhile.checked = location.dIW;
         fieldObj.picName.value = location.pFN;
-        fieldObj.breifDescription.textContent = paragraphRemove(location.bS);
-        fieldObj.option.textContent = paragraphRemove(location.o);
-        fieldObj.answerToOption.textContent = paragraphRemove(location.r);
+        fieldObj.breifDescription.value = paragraphRemove(location.bS);
+        fieldObj.option.value = paragraphRemove(location.o);
+        fieldObj.answerToOption.value = paragraphRemove(location.r);
         fieldObj.cONC.checked = location.cONC === 'correct' ? true : '';
         fieldObj.type.checked = location.type === 'module' ? true : '';
-        fieldObj.info.textContent = paragraphRemove(location.i);
-        fieldObj.l.textContent = paragraphRemove(location.l);
+        fieldObj.info.value = paragraphRemove(location.i);
+        fieldObj.l.value = paragraphRemove(location.l);
         fieldObj.lPath.checked = location.link.length !== 0 ? true : '';
         if (location.link.length !== 0) fieldObj.link = location.link;
 
@@ -370,7 +371,7 @@ findPathAndSave = (fPath, infoObj, option, truthy2 = false, tInput = false) => {
         }
     }
     let truthy = false;
-
+console.log(obj2);      
     for (let i = 0; i < obj2.length; i++) {
         if (typeof obj2[i] === 'undefined') {
             keyLength = i;
@@ -458,11 +459,21 @@ findPathAndSave = (fPath, infoObj, option, truthy2 = false, tInput = false) => {
         return
     } else if (option === 'option4' && typeof obj2 !== 'undefined') {
         // let opt = truthy2 === false ? keyLength : obj.itemKey;
+      let marker = false
+        for (let temp in obj) {
+        if (typeof obj[temp].bS !== 'undefined'){
+            marker === true
+        }
+    }
+    if (marker !== true) {
+        obj = obj[0];
+    }
         let opt = obj2.length;
         console.log(obj);
         if (tInput) {
             if ((obj2.length + 1) < 255) {
             obj2[opt] = obj;
+            obj2[opt].itemKey = opt;
             obj2.length = obj2.length +1;
             } else {
                 throw Error 
@@ -529,25 +540,36 @@ if ((obj.length + obj2.length) <= 256) {
 let findPathAndDelete = (fPath, infoObj) => {
     let path = fPath;
     let obj = infoObj;
+    let classPath;
+    if (sessionStorage.getItem('fPath') !== null) {
+        classPath = JSON.parse(sessionStorage.getItem('classP'));
+    } else {
+        classPath = [];
+    }
+    
     let place = obj;
-
+    
     for (let i = 0; i < path.length - 1; i++) {
         place = place[path[i]];
     }
-
+    
     if (path.length === 0) {
-
+        
         place = { length: 0 };
         return place;
     } else {
         if (typeof place[path[path.length - 1]].bS !== 'undefined') {
-
+            
             delete place[path[path.length - 1]];
             place.length = place.length - 1;
-
+            
             return obj
         }
     }
+    sessionStorage.setItem('fPath', JSON.stringify(fPath));
+    sessionStorage.setItem('classP', JSON.stringify(classPath));
+    classPath.pop();
+    fPath.pop();
     return false
 }
 
@@ -555,13 +577,10 @@ let findPathAndDelete = (fPath, infoObj) => {
 let delEntry = () => {
 
     fPath = JSON.parse(sessionStorage.getItem('fPath'));
-    classP = JSON.parse(sessionStorage.getItem('classP'));
+   
     let obj = findPathAndDelete(fPath, JSON.parse(sessionStorage.getItem('menu')));
     saveToIndexedDB('menuObject', { id: JSON.stringify(obj) }, 'train', 'trainingMenu');
-    fPath.pop();
-    classP.pop();
-    sessionStorage.setItem('fPath', JSON.stringify(fPath));
-    sessionStorage.setItem('classP', JSON.stringify(classP));
+   
 
     setTimeout(() => {
         location.reload();
@@ -751,8 +770,10 @@ let uidH = (replace, obja, t = true, arr = false, objPath = 0, len = false, t2 =
     let counter = 0;
 
     // counter2 = counter2 + 1;
+    
     for (let key2 in nObj) {
         nObj2 = nObj[key2];
+        console.log(nObj2);
         if (typeof nObj2.bS !== 'undefined') {
 
             t = false;

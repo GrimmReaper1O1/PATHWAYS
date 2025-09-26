@@ -95,7 +95,8 @@ let insertInformationPage = (e) => {
         console.log(info);
       let obj =  uidH(false, info, false);
       findPathAndSave(fPath, info, 'option4', false, true);
-        complete = true;
+    
+      complete = true;
     // } catch {
     //     el.textContent = 'There was a problem with the inforamtion entered. It likely was not valid json structure or there are too many entries. Please try again and refraim from altering the text';
     // }

@@ -14,7 +14,21 @@ let getAndDisplayObjectsInfo = () => {
     enterInformationIntoFields(obj);
 
 }
-
+let blankFields = () => {
+    let fieldObj = fieldHelper();
+      fieldObj.secs.value = '';
+        fieldObj.displayBefore.checked = '';
+        fieldObj.displayImageWhile.checked = '';
+        fieldObj.picName.value = '';
+        fieldObj.breifDescription.value = '';
+        fieldObj.option.value = '';
+        fieldObj.answerToOption.value = '';
+        fieldObj.cONC.checked = '';
+        fieldObj.type.checked = '';
+        fieldObj.info.value = '';
+        fieldObj.l.value = '';
+        fieldObj.lPath.checked = '';
+}
 
 let pressFunction3 = (e, opt) => {
     e.preventDefault();
@@ -65,6 +79,8 @@ let pressFunction3 = (e, opt) => {
             let el = document.getElementById('fieldPane');
             el.classList.remove('hidden');
             sessionStorage.setItem('option', 'option');
+            blankFields();
+
         } else {
             el2.classList.remove('hidden');
         }
