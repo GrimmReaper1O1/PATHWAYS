@@ -3,9 +3,9 @@ loadFromIndexedDB('menuObject', 'train', 'trainingMenu').then(response => {
 
     sessionStorage.setItem('menu', res);
     let blank = [];
-    sessionStorage.setItem('path', JSON.stringify(blank));
-    sessionStorage.setItem('classP', JSON.stringify(blank));
-    sessionStorage.setItem('fPath', JSON.stringify(blank));
+    // sessionStorage.setItem('path', JSON.stringify(blank));
+    // sessionStorage.setItem('classP', JSON.stringify(blank));
+    // sessionStorage.setItem('fPath', JSON.stringify(blank));
     sessionStorage.removeItem('link');
 
        sessionStorage.removeItem('csw2');
@@ -551,7 +551,7 @@ let findPathAndDelete = (fPath, infoObj) => {
     let path = fPath;
     let obj = infoObj;
     let classPath;
-    if (sessionStorage.getItem('fPath') !== null) {
+    if (fPath.length !== 0) {
         classPath = JSON.parse(sessionStorage.getItem('classP'));
     } else {
         classPath = [];
@@ -573,14 +573,13 @@ let findPathAndDelete = (fPath, infoObj) => {
             delete place[path[path.length - 1]];
             place.length = place.length - 1;
             
-            return obj
         }
     }
-    sessionStorage.setItem('fPath', JSON.stringify(fPath));
-    sessionStorage.setItem('classP', JSON.stringify(classPath));
     classPath.pop();
     fPath.pop();
-    return false
+    sessionStorage.setItem('fPath', JSON.stringify(fPath));
+    sessionStorage.setItem('classP', JSON.stringify(classPath));
+    return obj
 }
 
 

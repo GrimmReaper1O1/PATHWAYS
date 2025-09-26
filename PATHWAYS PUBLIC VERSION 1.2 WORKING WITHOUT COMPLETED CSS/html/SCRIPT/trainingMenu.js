@@ -346,6 +346,8 @@ console.log('one');
 
 let openMenu = (path, buttonList) => {
     let el, el2;
+    console.log(path);
+    console.log(buttonList);
     for (let i = 0; i < path.length; i++)  {
         el = document.getElementById(path[i]);
         el2 = document.getElementsByClassName(path[i]);
@@ -494,7 +496,15 @@ setTimeout(() => {
     let uIDButtonList = JSON.parse(sessionStorage.getItem('uidList'));
     let path = JSON.parse(sessionStorage.getItem('classP'));
     console.log(path);
+    if (path !== null) {
     openMenu(path, uIDButtonList);
+    } else {
+       let path = [];
+     
+       sessionStorage.setItem('fPath', JSON.stringify(path));
+       sessionStorage.setItem('classP', JSON.stringify(path));
+    }
+
 }, 300)
 }
 runMenu();
