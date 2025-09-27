@@ -126,7 +126,7 @@ let selectFunkytion = (e, opt = 'first', opt2 = 0, back = false, link = false, f
                 
                 tempObj = gatherInfoViaPath(links[i]);
                 counter = counter + 1;
-                string += `<button class="selectionbutton" onclick="selectFunkytion(event, 'third', '${links[links.length-1]}', false,  'a${i}')">`;
+                string += `<button class="selectionbutton" onclick="selectFunkytion(event, 'third', '${links[i][links[i].length-1]}', false,  'a${i}')">`;
                 string += `Option: ${counter} <br>`;
            
                     string += '<p>' + paragraphReplace(tempObj.o) + '</p>';
@@ -144,7 +144,8 @@ let selectFunkytion = (e, opt = 'first', opt2 = 0, back = false, link = false, f
         fPath2.pop();
         fPath2.pop();
         }
-     
+        console.log(fPath2);
+        console.log(opt2);
         fPath2.push(opt2);
         sessionStorage.setItem('fPath2', JSON.stringify(fPath2));
    
@@ -193,7 +194,7 @@ let selectFunkytion = (e, opt = 'first', opt2 = 0, back = false, link = false, f
                 
                 tempObj = gatherInfoViaPath(links[i]);
                 counter = counter + 1;
-                string += `<button class="selectionbutton" onclick="selectFunkytion(event, 'third', '${links[links.length-1]}', false, 'a${i}')">`;
+                string += `<button class="selectionbutton" onclick="selectFunkytion(event, 'third', '${links[i][links[i].length-1]}', false, 'a${i}')">`;
                 string += `Option: ${counter} <br>`;
               
                     string += '<p>' + paragraphReplace(tempObj.o) + '</p>';
@@ -207,6 +208,8 @@ let selectFunkytion = (e, opt = 'first', opt2 = 0, back = false, link = false, f
     } else if (opt = 'third') {
         let link2 = JSON.parse(sessionStorage.getItem(link));
         link2.pop();
+        console.log(opt2);
+        console.log(link2);
         sessionStorage.setItem('lastPath', sessionStorage.getItem('fPath2'));
         sessionStorage.setItem('fPath2', JSON.stringify(link2));
         if (link2.length === 0) {

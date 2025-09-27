@@ -114,7 +114,9 @@ let link = (e) => {
         // runMenu();
         console.log(menu, paths);
         console.log(JSON.parse(sessionStorage.getItem('fPath')));
+        setTimeout(()=> {
         location.reload();
+        }, 200)
     }
 };
 let delLink = (e) => {

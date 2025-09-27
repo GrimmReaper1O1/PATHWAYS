@@ -24,21 +24,39 @@ span {
 br {
     line-height: 0.7rem;
 }
+input {
+    line-height: 2rem;
+    font-size: 1.8rem;
+    height: 2rem;
+}
+input[type="checkbox"] {
+    height: 1.4rem;
+    width: 1.4rem;
+}
+textarea {
+    line-height: 2rem;
+    font-size: 1.8rem;
+}
 .selectionButton {
     width: 100%;
     color: white;
     border: 2px solid greenyellow;
     background-color: rgba(0, 100, 0, 0.606);
-    font-size: 0.9rem;
+    font-size: 1rem;
+    padding: 0.3rem;
 }
 .selectionButtonMenuList {
     width: 100%;
+    font-size: 1rem;
+    padding: 0.3rem;
 }
 .blueSelectionButton {
     width: 100%;
     color: white;
     border: 2px solid skyblue;
     background-color: rgba(0, 0, 255, 0.604);
+    font-size: 1rem;
+    padding: 0.3rem;
 }
 
 .margin-left-menu {
@@ -77,11 +95,17 @@ br {
 .min-width-80 {
     min-width: 80%;
 }
+.min-width-65 {
+    min-width: 65%;
+}
 .max-width-20 {
     max-width: 20%;
 }
 .justify-content {
     justify-content: justify;
+}
+.width-34 {
+    width: 34%;
 }
 .width-80 {
     width: 80%;
@@ -198,6 +222,12 @@ html {
 }
 
 }
+@media screen and ( min-height: 1440px) and ( orientation: landscape) {
+html {
+    font-size: 350%;
+}
+
+}
 @media screen and (max-height: 1279px) and ( min-height: 769px) and ( orientation: landscape) {
 html {
     font-size: 180%;
@@ -213,6 +243,12 @@ html {
 @media screen and (max-width: 1440px) and ( min-width: 1280px) and ( orientation: portrait) {
 html {
     font-size: 299%;
+}
+
+}
+@media screen and ( min-width: 1440px) and ( orientation: prtrait) {
+html {
+    font-size: 350%;
 }
 
 }
