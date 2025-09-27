@@ -18,6 +18,9 @@ body {
 p {
     text-align: justify;
 }
+span {
+    font-size: 1rem
+}
 br {
     line-height: 0.7rem;
 }
