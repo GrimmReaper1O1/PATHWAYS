@@ -31,6 +31,7 @@ let loopMods = (opt = true) => {
     let nObj;
     let string = '<br><br><br>';
     let func;
+    sessionStorage.removeItem('fPath2');
     for (let key in obj) {
         nObj = obj[key];
         if (typeof nObj !== 'undefined' && typeof nObj.bS !== 'undefined') {

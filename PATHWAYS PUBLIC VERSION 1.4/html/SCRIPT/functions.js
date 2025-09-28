@@ -790,14 +790,14 @@ let uidH = (replace, obja, t = true, arr = false, objPath = 0, len = false, t2 =
                 //     findPathAndSave(fPath, obj2, 'option3', t);
                 // }
                 obj2.uid = uidOne();
-                if (fPath.length === 0 && !replace) {
-               for (let i = 0; i < fPath.length; i++) {
-                place = place.length;
-            }
-            if (typeof place.length !== 'undefined') {
-            obj2.itemKey = place.length;
-            }
-        } 
+        //         if (fPath.length === 0 && !replace) {
+        //        for (let i = 0; i < fPath.length; i++) {
+        //         place = place.length;
+        //     }
+        //     if (typeof place.length !== 'undefined') {
+        //     obj2.itemKey = place.length;
+        //     }
+        // } 
          if (replace) {
                 obj2.itemKey = fPath[fPath.length - 1]
                

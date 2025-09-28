@@ -58,7 +58,7 @@ let pressFunction2 = (e, opt) => {
         findPathAndSave(fPath, obj, 'option4', false, false);
     }
     setTimeout(() => {
-        // location.reload();
+        location.reload();
     }, 50);
    }
     } 
