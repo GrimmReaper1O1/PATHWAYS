@@ -59,9 +59,12 @@ let backMenuSelection = (e) => {
 };
 let displayImageOnScreenBreifly = (imageFileName, t) => {
     let el = document.getElementById('imageDiv');
-    el.innerHTML = `<img src="./IMAGES/${imageFileName}" class="image-height-100"/>`;
     let el2 = document.getElementById('trainingDiv');
     el2.classList.add('hidden');
+    let img = document.createElement('img');
+    img.setAttribute('src', "./IMAGES/"+imageFileName);
+    img.classList.add('image-height-100')
+    el.appendChild(img);
     el.classList.remove('hidden');
     if (t === '0') {
         t = 0;
@@ -125,10 +128,10 @@ let selectFunkytion = (e, opt = 'first', opt2 = 0, back = false, link = false, f
           numeral = 'second';
        
         if (typeof obj.dB !== 'undefined') {
-            if (obj.dB === 'on') {
+            if (obj.dB !== '') {
                 displayImageOnScreenBreifly(obj.pFN, obj.s);
             }
-            if (obj.dIW === 'on') {
+            if (obj.dIW !== '') {
                 string += `<br><br><br><div id="trainingImage" class="margin-auto width-80"><img src="./IMAGES/${obj.pFN}" class="image-height-100"/></div>`;
  
             }
