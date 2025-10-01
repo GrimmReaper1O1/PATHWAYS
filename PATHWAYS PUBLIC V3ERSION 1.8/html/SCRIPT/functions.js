@@ -181,7 +181,7 @@ let swap = (e) => {
         sessionStorage.removeItem('swap2');
         sessionStorage.removeItem('swap1');
       setTimeout(()=> {
-        // location.reload();
+        location.reload();
         }, 200);
         }
     }
