@@ -1,0 +1,283 @@
+* {
+    
+    /* border: 1px solid grey; */
+}
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    height: 90vh;
+    overflow-y: hidden;
+    background-image: url('../SITEIMAGES/Copilot_20250924_184930.png');
+    background-size: cover;
+    font-size: 1.6rem
+}
+p {
+    text-align: justify;
+}
+span {
+    font-size: 1rem
+}
+br {
+    line-height: 0.7rem;
+}
+input {
+    line-height: 2rem;
+    font-size: 1.8rem;
+    height: 2rem;
+}
+input[type="checkbox"] {
+    height: 1.4rem;
+    width: 1.4rem;
+}
+textarea {
+    line-height: 2rem;
+    font-size: 1.8rem;
+}
+.selectionButton {
+    width: 100%;
+    color: white;
+    border: 2px solid greenyellow;
+    background-color: rgba(0, 100, 0, 0.606);
+    font-size: 1rem;
+    padding: 0.3rem;
+}
+.searchButton {
+    
+    color: white;
+    border: 2px solid greenyellow;
+    background-color: rgba(0, 100, 0, 0.606);
+    font-size: 1rem;
+    padding: 0.3rem;
+}
+.selectionButtonMenuList {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.3rem;
+}
+.blueSelectionButton {
+    width: 100%;
+    color: white;
+    border: 2px solid skyblue;
+    background-color: rgba(0, 0, 255, 0.604);
+    font-size: 1rem;
+    padding: 0.3rem;
+}
+
+.margin-left-menu {
+    margin-left: 20rem;
+}
+.flex {
+    display: flex;
+    
+}
+.flex-direction-column {
+    flex-direction: column;
+    justify-content: center;
+}
+.align-centered {
+    text-align: center;
+}
+.height-auto {
+    height: auto;
+}
+.margin-auto {
+    margin: 0 auto;
+}
+.hidden {
+    display: none;
+}
+.menu-size {
+    width: 3rem;
+    height: 3rem;
+}
+.menu-pic {
+    background-image: url('/IMAGES/menu.png');
+    background-size: contain;
+    
+    
+}
+.min-width-80 {
+    min-width: 80%;
+}
+.min-width-65 {
+    min-width: 65%;
+}
+.min-width-20 {
+    min-width: 20%;
+}
+.max-width-20 {
+    max-width: 20%;
+}
+.justify-content {
+    justify-content: justify;
+}
+.width-34 {
+    width: 34%;
+}
+.width-80 {
+    width: 80%;
+}
+.overflowScroll {
+    overflow-y: scroll;
+}
+.overflowScroll::-webkit-scrollbar {
+ display: none;
+}
+.feildWidth-90 {
+    width: 90%;
+}
+.height-6rem {
+    height: 6rem;
+}
+.height-15rem {
+    height: 15rem;
+}
+.vh90 {
+    height: 90vh;
+}
+.vh100 {
+    height: 100vh;
+}
+.vh10 {
+    height: 10vh;
+}
+.vh18 {
+    height: 18vh;
+}
+.vh75 {
+    height: 75vh;
+}
+.vh80 {
+    height: 80vh;
+}
+.width-100 {
+    width: 100%;
+}
+.vh80 {
+    height: 80vh;
+}
+.vh70 {
+    height: 70vh;
+}
+.min-width-80 {
+    min-width: 80%;
+}
+.width-80 {
+    width: 80%;
+}
+.vh70 {
+    height: 70vh;
+}
+.blue {
+    background-color: rgba(0, 0, 255, 0.607);
+    color: white;
+}
+.correct {
+    background-color: rgba(0, 128, 0, 0.61);
+color: white;
+}
+.link {
+    background-color: rgba(255, 255, 0, 0.612);
+    color: black;
+}
+.orange {
+    background-color: rgba(255, 166, 0, 0.618);
+    color: black;
+}
+.error {
+    background-color: rgba(255, 0, 0, 0.606);
+}
+.image-height-100 {
+    height: 80vh;
+    width: auto;
+}
+.incorrect {
+    background-color: rgba(255, 0, 0, 0.605);
+color: white;
+}
+.overflowYHidden {
+    overflow-y: hidden;
+}
+h1 {
+    font-size: 2rem;
+    text-decoration-line: underline;
+}
+.seethroughBlack {
+    background-color: rgba(0, 0, 0, 0.606)
+}
+.width-rem {
+    width: 16rem;
+}
+.flex-direction-row {
+    flex-direction: row;
+}
+.justify-content-centered {
+    justify-content: center;
+}
+.border-radius {
+    border-radius: 2rem;
+}
+.padding {
+    padding: 3rem;
+}
+.inline {
+    display: inline-block;
+}
+@media screen and (max-height: 481px) and ( min-height: 768px) and ( orientation: landscape) {
+html {
+    font-size: 120%;
+}
+
+}
+@media screen and (max-height: 1440px) and ( min-height: 1280px) and ( orientation: landscape) {
+html {
+    font-size: 299%;
+}
+
+}
+@media screen and ( min-height: 1440px) and ( orientation: landscape) {
+html {
+    font-size: 350%;
+}
+
+}
+@media screen and (max-height: 1279px) and ( min-height: 769px) and ( orientation: landscape) {
+html {
+    font-size: 180%;
+}
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 1440px) and ( min-width: 1280px) and ( orientation: portrait) {
+html {
+    font-size: 299%;
+}
+
+}
+@media screen and ( min-width: 1440px) and ( orientation: prtrait) {
+html {
+    font-size: 350%;
+}
+
+}
+@media screen and (max-width: 1279px) and ( min-width: 769px) and ( orientation: portrait) {
+html {
+    font-size: 180%;
+}
+
+}
+@media screen and (max-width: 768px) and ( min-width: 481px) and ( orientation: portrait) {
+
+html {
+    font-size: 120%;
+}
+}
